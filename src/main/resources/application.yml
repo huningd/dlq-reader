@@ -1,0 +1,5 @@
+#Don't use whitespaces
+dlq.names: order.dlq,notification.dlq
+logging:
+  level:
+    de.dhuning: debug
