@@ -1,0 +1,38 @@
+<app-header></app-header>
+<main class='mat-padding' layout="row" flex>
+    <mat-card>
+        <mat-card-title>
+            <span>Messages</span>
+        </mat-card-title>
+        <mat-list>
+            <mat-list-item *ngFor="let message of messages" (click)="onSelect(message)">
+                <mat-icon mat-list-icon>message</mat-icon>
+                <h4 mat-line>{{message.headers.id}}</h4>
+                <p mat-line> {{message.headers.timestamp | date : 'yyyy-MM-dd HH:mm:ss,sss Z'}} </p>
+            </mat-list-item>
+            <mat-list-item *ngIf="noMessage()">
+                <mat-icon mat-list-icon>not_interested</mat-icon>
+                <h4 mat-line>No messages</h4>
+            </mat-list-item>
+        </mat-list>
+    </mat-card>
+    <mat-card *ngIf="selectedMessage">
+        <mat-card-content>
+            <h3 mat-subheader>Details: </h3>
+            <mat-icon mat-list-icon>message</mat-icon>
+            <h4 mat-line>{{selectedMessage.headers.id}}</h4>
+            <p mat-line><label>payload: </label>{{selectedMessage.payload}}</p>
+            <h4 mat-line>headers: </h4>
+            <p mat-line *ngFor="let entry of selectedMessage.headers | keys">
+                - <label>{{entry.key}}: </label>{{entry.value}}
+            </p>
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+            <button mat-button (click)="deleteMessage()">
+                <mat-icon mat-list-icon>delete forever</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</main>
+<app-footer></app-footer>

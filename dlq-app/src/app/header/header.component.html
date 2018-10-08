@@ -1,0 +1,14 @@
+<mat-toolbar color="primary" class="toolbar-header">
+    <img src="../../assets/dlq.png" style="width:85px;height:75px;vertical-align: middle;"/>
+    <span style="alignment: center; padding-left: 10px"><b style="font-size: 24px">DLQ</b> reader</span>
+
+    <!-- This fills the remaining space of the current row -->
+    <span class="example-fill-remaining-space"></span>
+
+    <button mat-icon-button color="accent" (click)="openSnackBar()">
+        <mat-icon>done</mat-icon>
+    </button>
+    <mat-icon *ngIf="connected" style="color:darkgreen">signal_wifi_4_bar</mat-icon>
+    <mat-icon *ngIf="!connected" style="color:darkred">signal_wifi_off</mat-icon>
+</mat-toolbar>
+
